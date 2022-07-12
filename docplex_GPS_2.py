@@ -2,11 +2,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import numpy.matlib as mt
 from docplex.mp.model import Model
+# pip install docplex
 # pip install cplex
 #from qiskit.optimization.applications.ising import docplex
 
 #%config InlineBackend.figure_format = 'svg' # Makes the images look nice
-%config InlineBackend.figure_format = 'retina'
+#%config InlineBackend.figure_format = 'retina'
 #%config InlineBackend.figure_format = 'pdf'
 #plt.style.use("seaborn")
 
