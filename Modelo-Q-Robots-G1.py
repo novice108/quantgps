@@ -74,7 +74,7 @@ lis_r = range(R)
 lis_h = range(bmax+1)
 
 print("The number of qubits needed will be ",(N+2)**2*5*Q+(N+2)**2+Q*(bmax+1)+Q+(N+1)*Q+(N+2)**2)
-## print("El numero de coeficientes de la matriz sera ",math.comb((N+2)**2*5*Q,2))
+## print("The number of coefficients of the matrix will be ",math.comb((N+2)**2*5*Q,2))
 
 # 6*(N+2)**2*Q
 
@@ -91,12 +91,12 @@ lambda_6 = lag_gen
 lambda_7 = lag_gen
 
 lambda_8aux = lag_gen
-lambda_8 = lag_gen  ## Va ligada con la 4
+lambda_8 = lag_gen  ## It is linked with 4
 
 lambda_9 = lag_gen
 
 lambda_10_aux = lag_gen
-lambda_10 = lag_gen ## Va ligada con la 1
+lambda_10 = lag_gen ## It is linked with 1
 
 lambda_11 = 1/1000
 
@@ -123,7 +123,7 @@ for h in lis_h:
     for q in range(2,Q+1):
         coef.create_var(f"b_{h}_{q}")
         
-## Introducimos las variables auxiliares
+## We introduce the auxiliary variables
 for j in range(1,N+2):
     for q in lis_q:
         coef.create_var(f"aux1_{j}_{q}")
@@ -268,7 +268,7 @@ for i in range(1,N+1):
                     coef[(f"x_{i}_{j}_{r1}_{q}",f"x_{j}_{i}_{r2}_{q}")] +=  lambda_9 
                     
 
-## Restriction 10 aux
+## Restriction 10 auxiliar
 for i in lis_n:
     for j in lis_n:
         for r1 in lis_r_aux:
@@ -349,7 +349,7 @@ from neal import SimulatedAnnealingSampler
 #from dwave.system import DWaveSampler, EmbeddingComposite
 
 
-n_samples = 10000 # número de veces que ejecutamos el sistema
+n_samples = 10000 # number of times we run the system
 
 
 sampler = SimulatedAnnealingSampler()
@@ -360,9 +360,9 @@ sampleset = sampler.sample_qubo(dwave_dic, num_reads = n_samples,auto_scale=True
 
 solution = sampleset.first.sample
 
-## Mejor energia
+## better energy
 #print(sampleset.first.energy)
-## Matriz solucion
+## Solution matrix
 for q in lis_q:
     mat_sol = np.zeros((N+2,N+2))
     for i in  range(N+2):
@@ -371,7 +371,7 @@ for q in lis_q:
                 mat_sol[i,j] = 1
     print(mat_sol)
     
-    ## Pintamos el camino propuesto
+    ## We paint the proposed path
     plt.plot(puntos[:,0],puntos[:,1],'o')
     vaux = np.array(list(range(N+2)))
     suma_ruta = 0
@@ -384,9 +384,9 @@ for q in lis_q:
     plt.show()
     print("The robot ",q," travels ",suma_ruta)
 
-## Mejor energia
+## better energy
 #print(sampleset.first.energy)
-## Matriz solucion
+## Solution matrix
 print()
 print(lis_q)
 colores = ["b","g","r"]
@@ -500,7 +500,7 @@ for q in lis_q:
 print("Constraint 3 is providing",lambda_3*val_res3, "and should be ",-lambda_3*Q)  
 best_energy += val_res3*lambda_3
             
-    ## Restriction 3 extra
+## Restriction 3 extra
 val_res3_ext = 0
 for q in lis_q:
     for j in range(N+2):
@@ -622,10 +622,10 @@ best_energy += val_res9*lambda_9
 
 
 ## Restriction 10
-## Vamos a necesitar introducir 4 multi-bucles
+## We are going to need to introduce 4 multi-loops
 
 
-## Restriction 10 aux
+## Restriction 10 auxiliar
 val_res10aux = 0
 for i in lis_n:
     for j in lis_n:
