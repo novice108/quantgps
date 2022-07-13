@@ -705,3 +705,8 @@ for jjj in range(nsim):
         
     np.savetxt("Modelo_GPS.txt", SOLUCIONES)
  
+    lectura = np.loadtxt("Modelo_GPS.txt")
+    print("lectura ", lectura)
+    
+    print("lenght of dwave_dic ", len(dwave_dic))
+    print("nqm2 ", nqm2)
