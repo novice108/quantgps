@@ -121,3 +121,4 @@ route[len(route)-1] = 0
 plt.plot(puntos[:,0],puntos[:,1],"o")
 for ii in range(len(route)-1):
     plt.plot(puntos[(route[ii],route[ii+1]),0],puntos[(route[ii],route[ii+1]),1])
+plt.savefig("doccplex_GPS_2.png", bbox_inches='tight')
