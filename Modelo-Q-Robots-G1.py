@@ -1,3 +1,11 @@
+"""
+Q-Robots
+To model this problem, we will take the necessary penalty functions.
+Furthermore, in this modelling, we are going to try to introduce
+some additional variables that try to improve the performance of our modelling.
+We load the libraries that we are going to use.
+"""
+
 # pip install qubovert
 import qubovert
 import math
@@ -6,13 +14,19 @@ from neal import SimulatedAnnealingSampler
 import numpy as np
 import matplotlib.pyplot as plt
 
+"""
+The function that we introduce now will calculate
+what restrictions are not met when a solution is proposed.
+"""
 #%config InlineBackend.figure_format = 'svg' # Makes the images look nice
 #%config InlineBackend.figure_format = 'retina'
 #%config InlineBackend.figure_format = 'pdf'
 
+# We select the values of N and Q.
 N = 6
 Q = 2
 
+#We show the location of the nodes of the problem that we are going to solve
 ## We enter by hand the points we want to solve
 puntos = np.random.rand(N+1,2)
 
@@ -57,6 +71,7 @@ for j in range(0,N+1):
     dist[i,j],dist[j,i] = aux,aux
 print(dist)
 
+# We transform the distances into integer numbers.
 dist = np.floor(dist*1000)
 print(dist)
 
@@ -67,6 +82,8 @@ bmax = int(np.log2(dmax)) + 1
 print(dmax)
 print(bmax)
 
+#We create the lists that will
+#then serve us as indices in the sums
 R = 5
 lis_n = range(0,N+2)
 lis_q = range(1,Q+1)
@@ -78,6 +95,7 @@ print("The number of qubits needed will be ",(N+2)**2*5*Q+(N+2)**2+Q*(bmax+1)+Q+
 
 # 6*(N+2)**2*Q
 
+#We select the Lagrange Multipliers
 lag_gen = 9500
 
 lambda_1 = lag_gen
@@ -102,6 +120,7 @@ lambda_11 = 1/1000
 
 lambda_obj = 1/2
 
+#We introduce the variables of our model.
 # We create the variables of our model
 
 ## Variables x_{i,j,r,q}
@@ -132,6 +151,7 @@ for i in lis_n:
     for j in lis_n:
         coef.create_var(f"aux2_{i}_{j}")
 
+#We started to introduce our restrictions
 ## Restriction 1
 for i in lis_n:
     for j in lis_n:
@@ -345,6 +365,8 @@ for i in coef:
         
 #dwave_dic
 
+#We carry out the simulation
+#We try to show all the graphics in it.
 from neal import SimulatedAnnealingSampler
 #from dwave.system import DWaveSampler, EmbeddingComposite
 
@@ -384,6 +406,7 @@ for q in lis_q:
     plt.show()
     print("The robot ",q," travels ",suma_ruta)
 
+#We show the paths of the robots
 ## better energy
 #print(sampleset.first.energy)
 ## Solution matrix
@@ -444,9 +467,12 @@ node_colors[0] = "palegreen"
 
 nx.draw(G, pos2, edge_color=values, node_color = node_colors)
 plt.show()
-
 print("edges2 ", edges2)
 
+"""
+Verification of restrictions.
+The following code checks which constraints are satisfied and which are not.
+"""
 best_energy = 0
 
 ## Restriction 1
