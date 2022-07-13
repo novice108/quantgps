@@ -121,4 +121,34 @@ route[len(route)-1] = 0
 plt.plot(puntos[:,0],puntos[:,1],"o")
 for ii in range(len(route)-1):
     plt.plot(puntos[(route[ii],route[ii+1]),0],puntos[(route[ii],route[ii+1]),1])
+
+import numpy as np
+import networkx as nx
+
+colores = ["r","grey","y"]
+#aux = nx.from_numpy_matrix(np.array(dist))
+#aux = nx.DiGraph(aux)
+#pos = nx.spring_layout(aux)
+#G = nx.DiGraph(G)
+G = nx.DiGraph()
+#rows, cols = np.where(sol == 1)
+#edges = list(zip(rows.tolist(), cols.tolist()))
+#edges2 = [(x[0], x[1]%len(puntos)) for x in edges]
+
+edges = [(route[i], route[i+1]) for i in range(len(route)-1)]
+#pos2 = {int(i): puntos[i] for i in range(len(puntos))}
+#nx.draw(G, node_size=500, with_labels=True)
+#nx.draw_networkx_nodes(G, pos2)
+G.add_edges_from(edges)
+pos2 = nx.spring_layout(G) #PARFAIT
+nx.draw_networkx_labels(G, pos2)
+
+nx.draw_networkx_edges(G, pos2)
+
+node_colors = ["lightsteelblue" for _ in range(len(G.nodes))]
+node_colors[0] = "palegreen"
+
+nx.draw(G, pos2, node_color = node_colors)
+plt.show()
+
 plt.savefig("doccplex_GPS_2.png", bbox_inches='tight')
