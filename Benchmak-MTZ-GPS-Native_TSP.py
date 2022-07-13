@@ -100,3 +100,9 @@ plt.show()
 elapsed_time = np.round(time()-start_time,3)
 print("The time taken has been ", elapsed_time, "seconds.")
 
+#SIMULATION
+nsim = 1
+SOLUCIONES = np.zeros((nsim,3))
+print(SOLUCIONES)
+np.savetxt("Modelo_General.txt",SOLUCIONES)
+lectura = np.loadtxt("Modelo_General.txt")
