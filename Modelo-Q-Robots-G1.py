@@ -618,7 +618,7 @@ for j in range(1,N+2):
         for k in range(1,N+2):
             val_res8aux += solution[f"x_{j}_{k}_{1}_{q}"]*solution[f"aux1_{j}_{q}"] * (-2*lambda_8aux)
         val_res8aux += solution[f"aux1_{j}_{q}"]*lambda_8aux
-print("The ancilla constraint 8 is ",val_res8aux)
+print("The axillary constraint 8 is ",val_res8aux)
 best_energy += val_res8aux
                 
                 
