@@ -15,7 +15,7 @@ N = 5
 puntos = np.random.rand(N+1,2)
 plt.plot(puntos[:,0],puntos[:,1],"o")
 
-## Creamos la matriz
+## We create the matrix
 v1 = np.zeros((N+2,1))
 v1[:N+1,0] = puntos[:,0]
 v1[N+1,0] = puntos[0,0]
@@ -39,7 +39,7 @@ mdl = Model('qRobot')
 x = {(i,j,r): mdl.binary_var(name=f'x_{i}_{j}_{r}') 
      for i in range(N+2) for j in range(N+2)for r in range(3)}
 
-# Objetive function + constraint 5
+# objective function + constraint 5
 qRobot_Objective_Function = mdl.sum(x[(i,j,1)]*d[i,j] 
                                     for i in range(N+2) for j in range(N+2)) 
 
