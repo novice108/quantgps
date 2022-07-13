@@ -33,7 +33,7 @@ for j in range(0,N+1):
     i = N+1
     aux  =  fnorm(puntos[0,:]-puntos[j,:])
     dist[i,j],dist[j,i] = aux,aux
-print("dist = "dist)
+print("dist = ", dist)
 print("N=", N)
 
 #transform the distances into integers
