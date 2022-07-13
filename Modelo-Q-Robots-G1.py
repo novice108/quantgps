@@ -700,7 +700,7 @@ for q in range(2,Q+1):
 
                 
 
-print("Constraint 11 is providingo a best_energy ",val_res11, " y deberia ser ",0)
+print("Constraint 11 is providing a best_energy ",val_res11, " and it should be ",0)
 best_energy += val_res11
 
 ## Objective function
@@ -714,4 +714,4 @@ print("the objective function is: ",val_obj)
 
 
 print("Our energy is: ",best_energy)
-print("The sampleset energy is: ",sampleset.first.energy)
+print("The sampleset energy is: ", sampleset.first.energy)
