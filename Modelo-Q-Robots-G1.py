@@ -377,6 +377,9 @@ n_samples = 10000 # number of times we run the system
 sampler = SimulatedAnnealingSampler()
 #sampler = EmbeddingComposite(DWaveSampler())
 
+#sampler = EmbeddingComposite(DWaveSampler(solver={'topology__type': 'chimera'}))
+#sampler = EmbeddingComposite(DWaveSampler(solver={'topology__type': 'pegasus'}))
+
 #sampleset = sampler.sample_qubo(dwave_dic, num_reads = n_samples,auto_scale=True,postprocess = "optimization")
 sampleset = sampler.sample_qubo(dwave_dic, num_reads = n_samples,auto_scale=True)
 
