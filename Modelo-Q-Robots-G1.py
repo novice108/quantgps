@@ -23,8 +23,8 @@ what restrictions are not met when a solution is proposed.
 #%config InlineBackend.figure_format = 'pdf'
 
 # We select the values of N and Q.
-N = 6
-Q = 2
+N = 6 # Number of cities
+Q = 2 # Number of vehicles
 
 #We show the location of the nodes of the problem that we are going to solve
 ## We enter by hand the points we want to solve
